@@ -1,28 +1,17 @@
-name: Deploy static site to GitHub Pages
+name: GitHub Pages
 
 on:
   push:
     branches:
-      - main  # adjust if your default branch is different
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+      - main
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest   # recommended over windows-latest for Pages
-
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/configure-pages@v3
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2  # upgrade to v2
-
+      - uses: actions/upload-pages-artifact@v2
         with:
-          path: .   # path to your built static files
-
-      - uses: actions/deploy-pages@v2  # upgrade to v2
+          path: .
+      - uses: actions/deploy-pages@v2
